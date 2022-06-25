@@ -1,3 +1,0 @@
-ansible lab -i .ansible/inventory.yaml \
--m get_url \
--a "url=https://github.com/valentin-voica/ansible/blob/main/test_file dest=/home/pi"
