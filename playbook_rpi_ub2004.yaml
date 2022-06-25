@@ -1,0 +1,8 @@
+---
+- name: Initial configuration Raspberry Pi Ubuntu Server 20.04
+  hosts: staging
+  remote_user: pi
+  become: true
+
+  tasks:
+    - name: Static IP address to Ubuntu Server
