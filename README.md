@@ -6,4 +6,3 @@ A collection of Ansible plays
 ### Static IP address:
 
 `$ ansible-playbook playbook_static_ip_ub2004.yaml -i inventory_staging.yaml -K`
-
