@@ -1,4 +1,4 @@
-# ansible
+# ANSIBLE
 A collection of Ansible plays
 
 ## Ubuntu Server 20.04 LTS - Initial Configuration
