@@ -5,4 +5,4 @@
   become: true
 
   tasks:
-    - name: Static IP address to Ubuntu Server
+    - name: Update and upgrade the system
