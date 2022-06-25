@@ -15,3 +15,14 @@
   - name: Display the last line of the previous task to check the stats
     debug:
       msg:  "{{updatesys.stdout_lines|last}}"
+
+  - name: Configure static IP address
+      ansible.builtin.get_url:
+        url: https://raw.githubusercontent.com/valentin-voica/configs/main/ubuntu_2004/50-cloud-init.yaml
+        dest: /etc/netplan/50-cloud-init.yaml
+        owner: root
+        group: root
+        mode: 0644
+      #notify:
+       # - netplan apply
+      #when: cfg_static_network == true
