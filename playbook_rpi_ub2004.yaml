@@ -1,8 +1,15 @@
 ---
 - name: Initial configuration Raspberry Pi Ubuntu Server 20.04
-  hosts: staging
-  remote_user: pi
-  become: true
-
+  
   tasks:
     - name: Update and upgrade the system
+  hosts: staging
+    remote_user: pi
+    become: yes
+    max_fail_percentage: 0
+    serial: 1
+    roles:
+      # - stop-applications
+      - server-update-reboot
+      # - server-config-xyz
+      #  - start-applications
