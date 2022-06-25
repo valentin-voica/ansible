@@ -1,0 +1,20 @@
+---
+- name: Static IP address in the "Servers" VLAN
+  hosts: ubuntu
+  become: true
+
+tasks:
+  - name: Replace the configuration file and apply the new configuration
+    ansible.builtin.get_url:
+      url: https://raw.githubusercontent.com/valentin-voica/configs/main/ubuntu_2004/50-cloud-init.yaml
+      dest: /etc/netplan/50-cloud-init.yaml
+      owner: root
+      group: root
+      mode: 0644
+    notify:
+      - netplan apply
+    when: cfg_static_network == true
+
+  - name: Reboot the device
+    ansible.builtin.reboot:
+      reboot_timeout: 10
