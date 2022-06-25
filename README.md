@@ -12,5 +12,5 @@ This Ansible playbook downloads the static IP address configuration file from th
 ### Other tasks
 
 * Update the cache and upgrade the system
-* Configure PoE HAT fan thresholds
+* Configure PoE HAT fan thresholds (Raspberry Pi only)
 * 
