@@ -13,7 +13,6 @@
         mode: 0644
       notify:
         - netplan apply
-      when: cfg_static_network == true
 
     - name: Reboot the device
       ansible.builtin.reboot:
