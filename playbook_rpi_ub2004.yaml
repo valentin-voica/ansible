@@ -1,11 +1,17 @@
 ---
 - name: Initial configuration
   hosts: ubuntu
+  become: true
 
   tasks:
-  - name: Update and upgrade apt packages
-    become: true
+  - name: Update cache and upgrade all packages
+    register: updatesys
     apt:
-      upgrade: yes
+      name "*"
+      state: latest
       update_cache: yes
       cache_valid_time: 86400 #One day
+
+  - name: Display the last line of the previous task to check the stats
+    debug:
+      msg:  "{{updatesys.stdout_lines|last}}"
