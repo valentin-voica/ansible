@@ -2,7 +2,7 @@ all:
 
   hosts:
     ubuntu:
-      ansible_host: 172.20.10.122
+      ansible_host: 172.20.30.3
       ansible_user: pi
   
   children:
