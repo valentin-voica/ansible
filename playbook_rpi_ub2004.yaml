@@ -1,8 +1,9 @@
 ---
-- name: Initial configuration Raspberry Pi Ubuntu Server 20.04
-  
+- name: Update and upgrade the server
+  hosts: ubuntu
+  remote_user: pi
+
   tasks:
-    - name: Update and upgrade the system
-  hosts: '{{inventory}}'
-    become: yes
-    shell: ping -c1 www.shellhacks.com
+  - name: Ping a mirror
+    shell:
+      ping -c1 www.shellhacks.com
