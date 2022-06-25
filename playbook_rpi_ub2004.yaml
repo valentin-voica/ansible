@@ -1,6 +1,6 @@
 ---
 - name: Initial configuration
-  children: servers
+  hosts: ubuntu
 
   tasks:
   - name: Update and upgrade apt packages
