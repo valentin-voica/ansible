@@ -11,6 +11,10 @@ This Ansible playbook downloads the static IP address configuration file from th
 
 ### Other tasks
 
+`$ ansible-playbook playbook_rpi_ub2004.yaml -i inventory_staging.yaml -K`
+
+This playbook configures the following:
+
 * Update the cache and upgrade the system
 * Configure PoE HAT fan thresholds (Raspberry Pi only)
 * 
