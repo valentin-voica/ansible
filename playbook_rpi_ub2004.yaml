@@ -18,7 +18,7 @@
 
     - name: Configure the PoE HAT fan thresholds
       ansible.builtin.blockinfile:
-        path: /boot/firmware/usercfg.txt
+        path: /boot/firmware/config.txt
         block: |
           # PoE Hat Fan Speeds
           dtoverlay=rpi-poe
@@ -26,3 +26,4 @@
           dtparam=poe_fan_temp1=74000
           dtparam=poe_fan_temp2=76000
           dtparam=poe_fan_temp3=81000
+        
