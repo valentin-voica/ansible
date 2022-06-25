@@ -6,3 +6,10 @@ A collection of Ansible plays
 ### Static IP address:
 
 `$ ansible-playbook playbook_static_ip_ub2004.yaml -i inventory_staging.yaml -K`
+
+This Ansible playbook downloads the static IP address configuration file from the `configs` repo, applies the change, then, after a 10 seconds delay, restarts the system.
+
+### Other tasks
+
+* Update the cache and upgrade the system
+* 
