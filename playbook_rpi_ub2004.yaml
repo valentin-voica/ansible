@@ -27,3 +27,7 @@
           dtparam=poe_fan_temp2=76000
           dtparam=poe_fan_temp3=81000
         
+    - name: Reboot the device
+      ansible.builtin.reboot:
+        reboot_timeout: 10
+        
