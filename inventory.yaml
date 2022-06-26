@@ -11,7 +11,7 @@ all:
         ubuntu.voica.lan:
           user: pi
           user_passwd: "{{ ubuntu_user_passwd }}"
-          root_passwd: "{{ ubuntu_root_passwd }}"
-          ssh_pub_key: "{{ lookup('file', '~/.ssh/host_ed25519.pub')  }}"
+          #root_passwd: "{{ ubuntu_root_passwd }}"
+          #ssh_pub_key: "{{ lookup('file', '~/.ssh/host_ed25519.pub')  }}"
           ansible_become_pass: "{{ ubuntu_user_passwd }}"
           cfg_static_network: false

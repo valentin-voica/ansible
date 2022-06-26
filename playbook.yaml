@@ -1,6 +1,6 @@
 ---
-- name: Initial configuration
-  hosts: ubuntu
+- name: Initial server configuration
+  hosts: all
   become: true
 
   tasks:
@@ -27,7 +27,19 @@
           dtparam=poe_fan_temp2=76000
           dtparam=poe_fan_temp3=81000
         
-    - name: Reboot the device
-      ansible.builtin.reboot:
-        reboot_timeout: 10
-        
+    - name: Check if reboot is needed
+      stat:
+        path: /var/run/reboot-required
+      register: reboot_required
+
+    - name: Set hostname
+      hostname:
+        name: "{{ inventory_hostname_short }}"
+
+    - name: Add FQDN to /etc/hosts
+      ansible.builtin.lineinfile:
+        dest: /etc/hosts
+        regexp: '^127\.0\.1\.1'
+        line: '127.0.1.1 {{ inventory_hostname }} {{ inventory_hostname_short }}'
+        state: present
+
