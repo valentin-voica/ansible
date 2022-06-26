@@ -11,7 +11,7 @@ This Ansible playbook downloads the static IP address configuration file from th
 
 ### Other tasks
 
-`$ ansible-playbook playbook_rpi_ub2004.yaml -i inventory.yaml -K`
+`$ ansible-playbook --ask-vault-pass --extra-vars '@passwd.yaml' playbook.yaml -l ubuntu.voica.lan -u pi`
 
 This playbook configures the following:
 
