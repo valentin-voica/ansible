@@ -43,3 +43,38 @@
         line: '127.0.1.1 {{ inventory_hostname }} {{ inventory_hostname_short }}'
         state: present
 
+    - name: Static IP address in the "Servers" VLAN
+      ansible.builtin.get_url:
+        url: https://raw.githubusercontent.com/valentin-voica/configs/main/ubuntu_2004/50-cloud-init.yaml
+        dest: /etc/netplan/50-cloud-init.yaml
+        owner: root
+        group: root
+        mode: 0644
+      notify:
+        - netplan apply
+      when: cfg_static_network == true
+
+    - name: Reboot the server if needed
+      ansible.builtin.reboot:
+        msg: "Reboot initiated by Ansible because of reboot required file."
+        connect_timeout: 5
+        reboot_timeout: 60
+        pre_reboot_delay: 0
+        post_reboot_delay: 30
+        test_command: whoami
+      when: reboot_required.stat.exists
+
+    - name: Remove old packages from the cache
+      ansible.builtin.apt:
+        autoclean: yes
+
+    - name: Remove dependencies that are no longer needed
+      ansible.builtin.apt:
+        autoremove: yes
+        purge: yes
+
+  handlers:
+    - name: netplan apply
+      command: netplan apply
+      when: cfg_static_network == true 
+
