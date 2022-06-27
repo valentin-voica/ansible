@@ -21,21 +21,23 @@ Write the SD card using Raspberry Pi Imager
 
 Make sure the relevant information is correct
 
-* 
-  
+* "ubuntu.voica.lan" must always be in the "hosts:" group
+* The `passwd.yaml` is in the `~/GitProjects/ansible/ubuntu` directory
 
-This playbook configures the following:
+### Creating the playbook
+
+The `ubuntu-rpi.yaml` playbook configures the following:
 
 * Update the cache and upgrade the system
 * Configure PoE HAT fan thresholds
-* Set the hostname
+* Set the hostname in the `/etc/hosts` file
 * Reboots the system if required
 * Removes old packages from the cache
 * Removes dependencies that are no longer needed
-* Configures a static IP address in the Servers VLAN
+* Configures a static IP address in the Servers VLAN 30
 
 To run the playbook, make sure you are inside the directory containg the `passwd.yaml` file:
 
 `$ cd ~/GitProjects/ansible/ubuntu`
 
-`$ ansible-playbook --ask-vault-pass --extra-vars '@passwd.yaml' ~/GitProjects/ansible/playbook.yaml -l ubuntu.voica.lan -u pi`
+`$ ansible-playbook --ask-vault-pass --extra-vars '@passwd.yaml' ~/GitProjects/ansible/ubuntu-rpi.yaml -l ubuntu.voica.lan -u pi`
