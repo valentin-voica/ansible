@@ -6,7 +6,7 @@ all:
     ansible_become_method: sudo 
 
   children:
-    servers:
+    stage:
       hosts:
         ubuntu.voica.lan:
           user: pi

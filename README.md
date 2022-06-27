@@ -11,10 +11,11 @@ This Ansible playbook downloads the static IP address configuration file from th
 
 ### Other tasks
 
-`$ ansible-playbook --ask-vault-pass --extra-vars '@passwd.yaml' playbook.yaml -l ubuntu.voica.lan -u pi`
+`$ ansible-playbook --ask-vault-pass --extra-vars '@passwd.yaml' ~/GitProjects/ansible/playbook.yaml -l ubuntu.voica.lan -u pi`
 
 This playbook configures the following:
 
 * Update the cache and upgrade the system
 * Configure PoE HAT fan thresholds (Raspberry Pi only)
-* 
+* Set the hostname
+
