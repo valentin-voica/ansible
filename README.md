@@ -5,6 +5,8 @@ A collection of Ansible plays
 
 ### Tasks
 
+`$ cd ~/GitProjects/ansible/ubuntu`
+
 `$ ansible-playbook --ask-vault-pass --extra-vars '@passwd.yaml' ~/GitProjects/ansible/playbook.yaml -l ubuntu.voica.lan -u pi`
 
 This playbook configures the following:
