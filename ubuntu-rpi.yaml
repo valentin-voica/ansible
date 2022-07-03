@@ -50,21 +50,31 @@
         - netplan apply
       when: cfg_static_network == true
 
-    - name: ufw allow ssh port '{{ ssh_port }}'.
-      ufw:
+    - name: Update apt cache and make sure UFW is installed
+      ansible.builtin.apt:
+        name: ufw
+        update_cache: yes
+
+# Firewall rules
+
+    - name: allow SSH access
+      community.general.ufw:
+        rule: limit
+        name: OpenSSH
+
+    - name: allow all HTTP traffic
+      community.general.ufw:
         rule: allow
         proto: tcp
-        port: '{{ ssh_port }}'
-        state: enabled
-    - name: ufw allow http port '{{ http_port }}'
-      ufw:
+        port: 80
+        log: no
+    
+    - name: allow all HTTPS traffic
+      community.general.ufw:
         rule: allow
         proto: tcp
-        port: '{{ http_port }}'
-        state: enabled 
-    - name: ufw turn logging off
-      ufw:
-        logging: "off"
+        port: 443
+        log: no
 
     - name: Reboot the server if needed
       ansible.builtin.reboot:
