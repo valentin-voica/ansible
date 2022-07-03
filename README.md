@@ -17,14 +17,14 @@ Write the SD card using Raspberry Pi Imager
   * "Set locale settings" check-box ticked; Time zone: Europe/London | Keyboard layout: gb
 * Click the "WRITE" button
 
-### Creating the `inventory.yaml` file
+### The Inventory
 
 Make sure the relevant information is correct
 
 * "ubuntu.voica.lan" must always be in the "hosts:" group
 * The `passwd.yaml` is in the `~/GitProjects/ansible/ubuntu` directory
 
-### Creating the playbook
+### The Playbook
 
 The `ubuntu-rpi.yaml` playbook configures the following:
 
