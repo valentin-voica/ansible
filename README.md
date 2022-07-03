@@ -12,7 +12,7 @@ Write the SD card using Raspberry Pi Imager
 * Advanced Options
   * "Set hostname" check-box ticked; hostname: ubuntu
   * "Enable SSH" check-box ticked; select "Allow public-key authentication only" and enter the content of the `id_rsa.pub` file from the client system
-  * "Set username and password" check-box ticked; Username: pi | Password: ***************
+  * "Set username and password" check-box ticked; Username: `pi` | Password: `***************`
   * "Configure wireless LAN" check-box un-ticked
   * "Set locale settings" check-box ticked; Time zone: Europe/London | Keyboard layout: gb
 * Click the "WRITE" button
@@ -35,6 +35,7 @@ The `ubuntu-rpi.yaml` playbook configures the following:
 * Removes old packages from the cache
 * Removes dependencies that are no longer needed
 * Configures a static IP address in the Servers VLAN 30
+* UFW firewall configurations
 
 To run the playbook, make sure you are inside the directory containg the `passwd.yaml` file:
 
