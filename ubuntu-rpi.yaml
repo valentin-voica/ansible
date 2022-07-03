@@ -50,6 +50,22 @@
         - netplan apply
       when: cfg_static_network == true
 
+    - name: ufw allow ssh port '{{ ssh_port }}'.
+      ufw:
+        rule: allow
+        proto: tcp
+        port: '{{ ssh_port }}'
+        state: enabled
+    - name: ufw allow http port '{{ http_port }}'
+      ufw:
+        rule: allow
+        proto: tcp
+        port: '{{ http_port }}'
+        state: enabled 
+    - name: ufw turn logging off
+      ufw:
+        logging: "off"
+
     - name: Reboot the server if needed
       ansible.builtin.reboot:
         msg: "Reboot initiated by Ansible because of reboot required file."
