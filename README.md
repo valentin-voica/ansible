@@ -24,9 +24,15 @@ Make sure the relevant information is correct
 * "ubuntu.voica.lan" must always be in the "hosts:" group
 * The `passwd.yaml` is in the `~/GitProjects/ansible/ubuntu` directory
 
-### The Playbook
+### The Playbooks
 
-The `ubuntu-rpi.yaml` playbook configures the following:
+To run these playbooks, make sure you are inside the directory containg the `passwd.yaml` file:
+
+`$ cd ~/GitProjects/ansible/ubuntu`
+
+#### `ubuntu-rpi.yaml` playbook
+
+This playbook configures the following:
 
 * Update the cache and upgrade the system
 * Configure PoE HAT fan thresholds
@@ -37,8 +43,11 @@ The `ubuntu-rpi.yaml` playbook configures the following:
 * Configures a static IP address in the Servers VLAN 30
 * UFW firewall configurations
 
-To run the playbook, make sure you are inside the directory containg the `passwd.yaml` file:
-
-`$ cd ~/GitProjects/ansible/ubuntu`
-
 `$ ansible-playbook --ask-vault-pass --extra-vars '@passwd.yaml' ~/GitProjects/ansible/ubuntu-rpi.yaml -l ubuntu.voica.lan -u pi`
+
+#### `install-docker.yaml` playbook
+
+The playbook adds on top of the previous one installing and configuring Docker. It was built by following the tutorial at [How to Use Ansible to Install and Set Up Docker on Ubuntu 20.04](https://www.digitalocean.com/community/tutorials/how-to-use-ansible-to-install-and-set-up-docker-on-ubuntu-20-04).
+
+`$ ansible-playbook --ask-vault-pass --extra-vars '@passwd.yaml' ~/GitProjects/ansible/install-docker.yaml -l ubuntu.voica.lan -u pi`
+
