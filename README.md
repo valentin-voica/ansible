@@ -1,7 +1,7 @@
 # ANSIBLE
 A collection of Ansible plays
 
-## Ubuntu Server 20.04 LTS on Raspberry Pi 4 with PoE HAT - Initial Configuration
+## Self-Hosted Nextcloud on a Raspberry Pi 4 with PoE HAT and Ubuntu 20.04 Server
 
 ### Preparing the SD card
 
