@@ -52,3 +52,9 @@
     - name: Install Docker-Compose
       ansible.builtin.pip: 
         name: docker-compose
+
+    - name: Install apache2-utils
+      ansible.builtin.apt:
+        pkg:
+          - apache2-utils
+
